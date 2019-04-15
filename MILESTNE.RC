@@ -1,0 +1,643 @@
+/* Speed Resource script */
+
+
+CONST
+     ID_MAIN=1
+     CM_PLAY=152
+     CM_DISCARD=153
+     CM_STARTNEW=154
+     ID_CHOICE=2
+     CM_BUT1=102
+     CM_BUT3=104
+     CM_BUT5=106
+     CM_BUT7=108
+     CM_BUT2=103
+     CM_BUT4=105
+     CM_BUT6=107
+     ID_ENDDLG=3
+     CM_YES=180
+     CM_NO=181
+     ID_ABOUT=4
+     ID_MESS=5
+END
+
+
+DLGTEMPLATE ID_MAIN
+BEGIN
+     DIALOG "OS/2 Milestone",ID_MAIN,3,33,443,198
+       STYLE FS_SCREENALIGN|FS_DLGBORDER|WS_VISIBLE
+       FLAGS FCF_TITLEBAR|FCF_MINBUTTON|FCF_SYSMENU|FCF_NOBYTEALIGN
+     BEGIN
+          PUSHBUTTON "~Play",CM_FIRST+CM_PLAY,300,158,40,15
+            STYLE WS_VISIBLE|WS_TABSTOP|WS_DISABLED
+            FLAGS NO_FLAGS
+
+          PUSHBUTTON "~Discard",CM_FIRST+CM_DISCARD,300,141,40,15
+            STYLE WS_VISIBLE|WS_TABSTOP|WS_DISABLED
+            FLAGS NO_FLAGS
+
+          PUSHBUTTON "~Help",CM_FIRST+CM_HELP,300,124,40,15
+            STYLE WS_VISIBLE|WS_TABSTOP
+            FLAGS NO_FLAGS
+
+          CTEXT "Card 1",155,5,128,27,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          CTEXT "Card 2",156,46,128,27,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          CTEXT "Card 3",157,89,128,27,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          CTEXT "Card 4",158,132,128,27,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          CTEXT "Card 5",159,175,128,27,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          CTEXT "Card 6",160,218,128,27,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          CTEXT "Card 7",161,261,128,27,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          CONTROL "Frame",120,5,140,25,30
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",121,46,140,25,30
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",122,89,140,25,30
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",123,132,140,25,30
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",124,175,140,25,30
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",125,218,140,25,30
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",126,261,140,25,30
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          GROUPBOX "",100,349,2,91,175
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS NO_FLAGS
+
+          CONTROL "Frame",101,350,26,89,2
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",101,350,72,89,2
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",101,350,98,89,2
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CTEXT "Your Distance",102,351,60,86,8
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+
+          CTEXT "My Distance",104,351,40,86,8
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+
+          CTEXT "Cards Left",106,352,86,85,8
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+
+          CONTROL "Frame",108,369,108,53,56
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CTEXT "Discard",109,372,152,47,9
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+
+          PUSHBUTTON "~Quit",CM_FIRST+CM_OK,398,7,37,15
+            STYLE WS_VISIBLE|WS_TABSTOP
+            FLAGS NO_FLAGS
+
+          PUSHBUTTON "~Start",CM_FIRST+CM_STARTNEW,355,7,37,15
+            STYLE WS_VISIBLE|WS_TABSTOP
+            FLAGS BS_DEFAULT
+
+          CTEXT "0",103,351,50,86,8
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+
+          CTEXT "0",105,351,30,86,8
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+
+          CTEXT "0",107,352,76,84,8
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+
+          CONTROL "Frame",110,383,118,25,30
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          GROUPBOX "",111,3,176,437,22
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS NO_FLAGS
+
+          LTEXT "",112,5,180,431,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+
+          GROUPBOX "Your Pile",113,3,64,330,61
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS NO_FLAGS
+
+          CTEXT "Speed",146,8,107,38,8
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+
+          CTEXT "Battle",147,67,107,38,8
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+
+          LTEXT "Safeties:",148,129,107,39,8
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+
+          CONTROL "Frame",130,13,72,25,30
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",131,72,72,25,30
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",132,129,72,25,30
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",133,179,72,25,30
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",134,229,72,25,30
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",135,279,72,25,30
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          GROUPBOX "My Pile",114,3,2,330,61
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS NO_FLAGS
+
+          CTEXT "Speed",149,8,46,38,8
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+
+          CTEXT "Battle",150,67,46,40,8
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+
+          LTEXT "Safeties:",151,129,46,38,8
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+
+          CONTROL "Frame",140,13,10,25,30
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",141,72,10,25,30
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",142,129,10,25,30
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",143,179,10,25,30
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",144,229,10,25,30
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",145,279,10,25,30
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+     END
+END
+
+DLGTEMPLATE ID_CHOICE
+BEGIN
+     DIALOG "Play/Discard Card",ID_CHOICE,68,126,200,56
+       STYLE FS_DLGBORDER|WS_VISIBLE|WS_SAVEBITS
+       FLAGS FCF_TITLEBAR|FCF_SYSMENU|FCF_NOBYTEALIGN
+     BEGIN
+          PUSHBUTTON "~Cancel",CM_FIRST+CM_CANCEL,142,6,55,15
+            STYLE WS_VISIBLE|WS_TABSTOP
+            FLAGS NO_FLAGS
+
+          PUSHBUTTON "~1",CM_FIRST+CM_BUT1,2,6,15,15
+            STYLE WS_VISIBLE|WS_TABSTOP
+            FLAGS NO_FLAGS
+
+          PUSHBUTTON "~3",CM_FIRST+CM_BUT3,42,6,15,15
+            STYLE WS_VISIBLE|WS_TABSTOP
+            FLAGS NO_FLAGS
+
+          PUSHBUTTON "~5",CM_FIRST+CM_BUT5,82,6,15,15
+            STYLE WS_VISIBLE|WS_TABSTOP
+            FLAGS NO_FLAGS
+
+          PUSHBUTTON "~7",CM_FIRST+CM_BUT7,122,6,15,15
+            STYLE WS_VISIBLE|WS_TABSTOP
+            FLAGS NO_FLAGS
+
+          PUSHBUTTON "~2",CM_FIRST+CM_BUT2,22,6,15,15
+            STYLE WS_VISIBLE|WS_TABSTOP
+            FLAGS NO_FLAGS
+
+          PUSHBUTTON "~4",CM_FIRST+CM_BUT4,62,6,15,15
+            STYLE WS_VISIBLE|WS_TABSTOP
+            FLAGS NO_FLAGS
+
+          PUSHBUTTON "~6",CM_FIRST+CM_BUT6,102,6,15,15
+            STYLE WS_VISIBLE|WS_TABSTOP
+            FLAGS NO_FLAGS
+
+          GROUPBOX "",101,2,28,195,26
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS NO_FLAGS
+
+          CTEXT "Which Card?",100,7,34,184,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+     END
+END
+
+DLGTEMPLATE ID_ENDDLG
+BEGIN
+     DIALOG "Round Over",ID_ENDDLG,29,58,229,170
+       STYLE FS_DLGBORDER|WS_VISIBLE|WS_SAVEBITS
+       FLAGS FCF_TITLEBAR|FCF_SYSMENU|FCF_NOBYTEALIGN
+     BEGIN
+          LTEXT "Next Round?",101,39,8,53,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          PUSHBUTTON "~Yes",CM_FIRST+CM_YES,101,5,40,15
+            STYLE WS_VISIBLE|WS_TABSTOP
+            FLAGS BS_DEFAULT
+
+          PUSHBUTTON "~No",CM_FIRST+CM_NO,150,5,40,15
+            STYLE WS_VISIBLE|WS_TABSTOP
+            FLAGS NO_FLAGS
+
+          GROUPBOX "Scores",100,14,26,201,139
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS NO_FLAGS
+
+          CTEXT "ME",105,120,148,40,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+
+          CTEXT "YOU",106,168,148,40,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+
+          CONTROL "Frame",107,117,132,46,14
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",108,165,132,46,14
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          LTEXT "Complete Trip............:",109,19,119,95,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+
+          LTEXT "Distance ...................:",104,19,134,95,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+
+          CONTROL "Frame",110,117,117,46,14
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",111,165,117,46,14
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",112,117,102,46,14
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",113,165,102,46,14
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",114,117,86,46,14
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",115,165,86,46,14
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",116,117,70,46,14
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",117,165,70,46,14
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          LTEXT "Coup Fourres ............:",118,19,104,95,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+
+          LTEXT "Shut Out ...................:",120,19,72,95,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+
+          CONTROL "Frame",121,117,54,46,14
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",122,165,54,46,14
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",123,117,30,46,14
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CONTROL "Frame",124,165,30,46,14
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          LTEXT "Grand Total ..............:",126,19,32,95,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+
+          RTEXT "0",127,120,135,40,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          RTEXT "0",128,167,135,40,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          RTEXT "0",129,120,119,40,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          RTEXT "0",130,168,119,40,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          RTEXT "0",131,120,104,40,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          RTEXT "0",132,168,104,40,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          RTEXT "0",133,120,88,40,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          RTEXT "0",134,168,88,40,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          RTEXT "0",135,120,72,40,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          RTEXT "0",136,168,72,40,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          RTEXT "0",137,120,56,40,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          RTEXT "0",138,168,56,40,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          RTEXT "0",139,120,32,40,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          RTEXT "0",140,168,32,40,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          CONTROL "Frame",141,117,48,93,2
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          LTEXT "Round 00 Total ........:",125,19,56,95,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+
+          LTEXT "Safeties.....................:",119,19,88,94,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP
+     END
+END
+
+DLGTEMPLATE ID_ABOUT
+BEGIN
+     DIALOG "",ID_ABOUT,128,95,200,100
+       STYLE FS_DLGBORDER|WS_VISIBLE
+       FLAGS FCF_TITLEBAR|FCF_SYSMENU|FCF_NOBYTEALIGN
+     BEGIN
+          CONTROL "Frame",100,2,27,196,72
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          CTEXT "OS/2 Milestone",101,60,86,80,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          CTEXT "Version 1.04",102,60,74,80,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          CTEXT "1995-2001 Michael G. Slack",103,5,32,190,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          BITMAP "#5001",105,159,60,20,24
+            STYLE WS_VISIBLE|WS_GROUP
+
+          BITMAP "#5001",106,14,60,20,24
+            STYLE WS_VISIBLE|WS_GROUP
+
+          CTEXT "Written with Speed Pascal/2",104,5,44,190,10
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_VCENTER
+
+          PUSHBUTTON "~OK",CM_FIRST+CM_OK,80,6,40,15
+            STYLE WS_VISIBLE|WS_TABSTOP
+            FLAGS BS_DEFAULT
+     END
+END
+
+DLGTEMPLATE ID_MESS
+BEGIN
+     DIALOG "",ID_MESS,20,70,200,55
+       STYLE FS_DLGBORDER|WS_VISIBLE
+       FLAGS FCF_TITLEBAR|FCF_SYSMENU|FCF_NOBYTEALIGN
+     BEGIN
+          PUSHBUTTON "~Ok",CM_FIRST+CM_OK,80,2,40,15
+            STYLE WS_VISIBLE
+            FLAGS BS_DEFAULT
+
+          CONTROL "Frame",101,1,22,197,30
+            TYPE WC_STATIC
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS SS_FGNDFRAME
+
+          LTEXT "",190,33,25,160,24
+            STYLE WS_VISIBLE|WS_GROUP
+            FLAGS DT_TOP|DT_WORDBREAK
+
+          ICON "#1",1,5,29,21,16
+            STYLE WS_VISIBLE|WS_GROUP
+     END
+END
+
+STRINGTABLE 32
+BEGIN
+     32, "Shuffling cards, please wait..."
+     33, "~New"
+     34, "~Start"
+     35, "Play Card"
+     36, "Discard Card"
+     37, "Game Over"
+     38, "New Game?"
+     39, "Computers play - please wait..."
+     40, "Your move, play or discard"
+END
+
+HELPTABLE 499
+BEGIN
+     HELPITEM 499, 498, 500
+END
+
+HELPSUBTABLE 498
+BEGIN
+     HELPSUBITEM 500, 500
+END
+
+BITMAP 1000 G:\SPEED\PROGS\BMP1000.BMP
+
+BITMAP 1001 G:\SPEED\PROGS\BMP1001.BMP
+
+BITMAP 1002 G:\SPEED\PROGS\BMP1002.BMP
+
+BITMAP 1003 G:\SPEED\PROGS\BMP1003.BMP
+
+BITMAP 1004 G:\SPEED\PROGS\BMP1004.BMP
+
+BITMAP 2000 G:\SPEED\PROGS\BMP2000.BMP
+
+BITMAP 2001 G:\SPEED\PROGS\BMP2001.BMP
+
+BITMAP 2002 G:\SPEED\PROGS\BMP2002.BMP
+
+BITMAP 2003 G:\SPEED\PROGS\BMP2003.BMP
+
+BITMAP 2004 G:\SPEED\PROGS\BMP2004.BMP
+
+BITMAP 3000 G:\SPEED\PROGS\BMP3000.BMP
+
+BITMAP 3001 G:\SPEED\PROGS\BMP3001.BMP
+
+BITMAP 3002 G:\SPEED\PROGS\BMP3002.BMP
+
+BITMAP 3003 G:\SPEED\PROGS\BMP3003.BMP
+
+BITMAP 3004 G:\SPEED\PROGS\BMP3004.BMP
+
+BITMAP 4000 G:\SPEED\PROGS\BMP4000.BMP
+
+BITMAP 4001 G:\SPEED\PROGS\BMP4001.BMP
+
+BITMAP 4002 G:\SPEED\PROGS\BMP4002.BMP
+
+BITMAP 4003 G:\SPEED\PROGS\BMP4003.BMP
+
+BITMAP 4004 G:\SPEED\PROGS\BMP4004.BMP
+
+BITMAP 5000 G:\SPEED\PROGS\BMP5000.BMP
+
+BITMAP 5001 G:\SPEED\PROGS\BMP5001.BMP
+
+ICON ID_MAIN G:\SPEED\PROGS\ID_MAIN.ICO
+
